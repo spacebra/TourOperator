@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Home - View all Program
+{% endblock %}
+
+{% block body %}
+	<a href='/program/create'>create</a>
+
+	{% for program in programs %}
+		<div>
+		<a href='program/{{ program.id }}'><h1> {{ program.title }} </h1></a>
+		<h3> {{ program.description }} </h3>
+	    <h3> {{ program.price }} </h3>
+	    
+		</div>
+		{% for picture in program.picture_set.all %}
+			<img src='media/{{ picture.url }}' />
+	    	
+		{% endfor %}
+
+		<hr />
+
+	{% endfor %}
+{% endblock %}

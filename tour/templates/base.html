@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+		<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    </head>
+    <body>
+	<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">TourOperator</a>
+          <ul class="nav">
+            <li><a href="#">View All</a></li>
+            <li><a href="#">Operators</a></li>
+            <li><a href="#">Manage</a></li>
+            {% if user.is_authenticated %}
+            <li><a href='/logout'><i class="icon-user icon-white"></i> Log Out<b class="caret"></b></a></li>
+            {% else %}
+            <li><a href='/login'><i class="icon-user icon-white"></i> Log In<b class="caret"></b></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

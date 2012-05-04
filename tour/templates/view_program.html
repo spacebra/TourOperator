@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+	{{ program.title }}
+{% endblock %}
+
+{% block body %}
+    <h1> {{ program.title }} </h1>
+    <h3> {{ program.description }} </h3>
+    <h3> {{ program.price }} </h3>
+
+    <!--- comment
+    {% for picture in program.picture_set.all %}
+			<img src='/media/{{ picture.url }}' />
+	{% endfor %}
+	<br/>
+---->
+	{{ url }}
+
+    <a href='/program/{{ program.id }}/edit'>edit</a>
+    <a href='/program/{{ program.id }}/delete'>delete</a>
+{% endblock %}
