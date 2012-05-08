@@ -3,9 +3,26 @@
 {% block head_title %}Login{% endblock %}
 
 {% block body %}
-<div class="outer-container span6 offset3">
+<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/"><b>TourOperator</b></a>
+            <ul class="nav">
+              {% if user.is_authenticated %}
+              <li><a href="/">Programs</a></li>
+              <li><a href="/program/create">Create</a></li>
+              <li><a href="/program/manage">Manage</a></li>
+              <li><a href='/logout'><i class="icon-user icon-white"></i> Log Out</a></li>
+              {% else %}
+              <li class="active"><a href='/login'><i class="icon-user icon-white"></i> Log In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </div>
+  <div class="container">
   <div class="inner-container">
-    <h1>เข้าสู่ระบบ</h1>
+    <h1>Log in</h1>
 
     <form method="POST" action="">
       {% csrf_token %}
@@ -13,19 +30,18 @@
       <input type="hidden" name="next" value="{{next}}" />
 
       <div class="control-group">
-        <label for="id_email" class="control-label">อีเมล</label>
+        <label for="id_email" class="control-label">Username</label>
         <div class="controls">{{form.username}}</div>
       </div>
 
       <div class="control-group">
-        <label for="id_email" class="control-label">รหัสผ่าน</label>
+        <label for="id_email" class="control-label">Password</label>
         <div class="controls">{{form.password}}</div>
       </div>
 
       <div class="form_actions">
-        <button type="submit" class="btn btn-primary login_button">เข้าสู่ระบบ</button>
-        <a href="/accounts/password_reset/">ลืมรหัสผ่าน?</a>
-      </div>
+        <button type="submit" class="btn btn-primary login_button">Log in</button>
+        </div>
     </form>
     
   </div>

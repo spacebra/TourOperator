@@ -3,9 +3,28 @@
 {% block title %} Edit Program {% endblock %}
 
 {% block body %}
+	<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/"><b>TourOperator</b></a>
+            <ul class="nav">
+              {% if user.is_authenticated %}
+              <li class="active"><a href="/">Programs</a></li>
+              <li><a href="/program/create">Create</a></li>
+              <li><a href="/program/manage">Manage</a></li>
+              <li><a href='/logout'><i class="icon-user icon-white"></i> Log Out</a></li>
+              {% else %}
+              <li><a href='/login'><i class="icon-user icon-white"></i> Log In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </div>
     <form enctype="multipart/form-data" action="{{ action }}" method="post">
     	{% csrf_token %}
 		{{ form.as_p }}
+    existing picture: <br />
+    <img src='/media/{{ picture.url }}' /><br /><br />
 		<input type="submit" value="Submit" />
 	</form>
 {% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Home - View all Program
+{% endblock %}
+
+{% block body %}
+	<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/"><b>TourOperator</b></a>
+            <ul class="nav">
+              {% if user.is_authenticated %}
+              <li><a href="/">Programs</a></li>
+              <li><a href="/program/create">Create</a></li>
+              <li class="active"><a href="/program/manage">Manage</a></li>
+              <li><a href='/logout'><i class="icon-user icon-white"></i> Log Out</a></li>
+              {% else %}
+              <li><a href='/login'><i class="icon-user icon-white"></i> Log In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </div>
+    <table class="table table-striped">  
+        <thead>  
+          <tr>  
+            <th>Title</th>  
+            <th>Edit</th>  
+            <th>Erase</th>  
+          </tr>  
+        </thead>  
+        <tbody>  
+	{% for program in programs %}
+		<tr>  
+            <td><a href='/program/{{ program.id }}'>{{ program.title }} </a></td>  
+            <td><a href='/program/{{ program.id }}/edit'>edit</a> </td>  
+            <td><a href='/program/{{ program.id }}/delete'>delete</a></td>  
+        </tr> 
+	{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

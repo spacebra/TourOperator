@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-	TourOperator - {{ program.title }}
+Home - View all Program
 {% endblock %}
 
 {% block body %}
-    <div class="navbar navbar-fixed-top">
+	<div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
             <a class="brand" href="/"><b>TourOperator</b></a>
@@ -21,16 +21,18 @@
           </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <h1> {{ program.title }} </h1><br />
-        <img src='/media/{{ picture.url }}' /><br /><br />
-        <h6> {{ program.description }} </h6><br />
-        <h5>Price: {{ program.price }} Baht.</h5><br />
-    <!--- comment
-    {% for picture in program.picture_set.all %}
-			<img src='/media/{{ picture.url }}' />
-	{% endfor %}
-	<br/>
----->
+
+	{% for program in programs %}
+		<div>
+		<a href='program/{{ program.id }}'><h3> {{ program.title }} </h3></a>
+		<h5> {{ program.description }} </h5>
+	  <br />
+		{% for picture in program.picture_set.all %}
+			<img src='media/{{ picture.url }}' /><br />
+	  <a href='program/{{ program.id }}'>View details...</a>
+		{% endfor %}
     </div>
+		<hr />
+
+	{% endfor %}
 {% endblock %}

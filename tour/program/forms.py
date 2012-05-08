@@ -1,5 +1,7 @@
 from django import forms
 
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 from program.models import Program, Picture
 
 class CreateForm(forms.Form):

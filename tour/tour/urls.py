@@ -5,12 +5,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'program.views.view_all', name='view_all'),
+    url(r'^$', 'program.views.view_program_all', name='view_program_all'),
 
-    #url(r'^program/manage/$', 'program.views.manage'),
-
+    url(r'^program/manage/$', 'program.views.manage_program'),
+    url(r'^program/create/', 'program.views.create_program'),
     url(r'^program/(?P<program_id>\d+)/$', 'program.views.view_program' , name='view_program'),
-    url(r'^program/create/', 'program.views.create'),
     url(r'^program/(?P<program_id>\d+)/edit/$', 'program.views.edit_program' , name='edit_program'),
     url(r'^program/(?P<program_id>\d+)/delete/$', 'program.views.delete_program' , name='delete_program'),
 
